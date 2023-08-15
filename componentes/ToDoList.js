@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Switch, SwitchComponent, FlatList, Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import TodoItem from "./ToDoItem";
 
 const TodoList = ({ itens, trocaEstado, deleta}) => {
     const navigation = useNavigation();
@@ -12,7 +13,7 @@ const TodoList = ({ itens, trocaEstado, deleta}) => {
             <FlatList
             data={itens}
             renderItem={({ item }) => (
-                <ToDoItem item={item} trocaEstado={trocaEstado} deleta={deleta} />
+                <TodoItem item={item} trocaEstado={trocaEstado} deleta={deleta} />
             )}
             keyExtractor={item => item.id}
             />

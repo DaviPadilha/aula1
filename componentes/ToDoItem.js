@@ -1,9 +1,9 @@
 import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet, Switch, Switch } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Switch } from 'react-native';
 
-const todoItem = ({ item, trocaEstado, deleta}) => {
+const TodoItem = ({ item, trocaEstado, deleta}) => {
     return (
-        <View style={styles.todoItem}>
+        <View style={styles.TodoItem}>
             <Switch
                 value={item.completado}
                 onValueChange={() => trocaEstado(item.id)}
@@ -19,7 +19,7 @@ const todoItem = ({ item, trocaEstado, deleta}) => {
 };
 
 const styles = StyleSheet.create({
-    todoItem: {
+    TodoItem: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -42,4 +42,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default todoItem;
+export default TodoItem;

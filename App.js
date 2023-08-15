@@ -6,6 +6,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Header from './componentes/header';
 import TodoList from './componentes/ToDoList';
 import TelaAddTarefa from './Telas/addTarefas';
+import TodoItem from './componentes/ToDoItem';
 
 
 const Stack = createStackNavigator();
@@ -47,7 +48,7 @@ const Stack = createStackNavigator();
             options = {{headerShown: false}}
             name = "addTarefa"
             component = {TelaAddTarefa}
-            initalParams = {{ addTarefa: adicionaTarefa}}    
+            initialParams = {{ addTarefa: adicionaTarefa}}    
           />
         </Stack.Navigator>
       </NavigationContainer>
