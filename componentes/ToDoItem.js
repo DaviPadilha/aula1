@@ -1,24 +1,46 @@
 import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet, Switch } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Switch, LayoutAnimation, UIManager, Platform } from 'react-native';
+
+if(Platform.OS === 'android'){
+  UIManager.setLayoutAnimationEnabledExperimental (true);  
+}
 
 const TodoItem = ({ item, trocaEstado, deleta}) => {
+    const [isExpanded, setIsExpanded] = useState (false)
+    const expand = () => {
+        LayoutAnimation.spring()
+        setIsExpanded(!isExpanded)
+    }
+
     return (
-        <View style={styles.TodoItem}>
-            <Switch
+       <View style={styles.container}> 
+            <View style={styles.TodoItem}>
+                <Switch
                 value={item.completado}
                 onValueChange={() => trocaEstado(item.id)}
-            />
-            <Text style={item.completado ? styles.completedText : styles.text}>
-                {item.text}
-            </Text>
-            <TouchableOpacity onPress={() => deleta(item.id)}>
+                />
+                <TouchableOpacity onPress={expand}>
+                    <Text style={item.completado ? styles.completedText : styles.text}>
+                    {item.text}
+                    </Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => deleta(item.id)}>
                 <Text style={styles.deleteButton}>Excluir</Text>
-            </TouchableOpacity>
+                </TouchableOpacity>
             </View>
-    );
+        </View>
+    ); 
+     
 };
 
 const styles = StyleSheet.create({
+    container: {
+        flexDirection: 'column',
+        backgroundColor: '#ededed',
+        borderBottomWidth: 1,
+        borderBottomColor: '#ccc'
+    },
+            
     TodoItem: {
         flexDirection: 'row',
         justifyContent: 'space-between',
