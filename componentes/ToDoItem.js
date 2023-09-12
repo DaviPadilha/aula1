@@ -28,9 +28,14 @@ const TodoItem = ({ item, trocaEstado, deleta}) => {
                 <Text style={styles.deleteButton}>Excluir</Text>
                 </TouchableOpacity>
             </View>
+            {isExpanded && (
+                <View>
+                    <Text style={styles.text}><Text style={{fontWeight: 'bold'}}>&#8226; Data:</Text>{item.tarefa.data.toLocaleString().split(' ')[0]}</Text>
+                    <Text style={styles.text}><Text style={{fontWeight: 'bold'}}>&#8226; Descrição:</Text>{item.tarefa.descricao}</Text>
+                </View>
+            )}
         </View>
-    ); 
-     
+    );    
 };
 
 const styles = StyleSheet.create({
