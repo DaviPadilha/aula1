@@ -1,16 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Switch, LayoutAnimation, UIManager, Platform } from 'react-native';
+import Animated from "react-native-reanimated";
 
 if(Platform.OS === 'android'){
   UIManager.setLayoutAnimationEnabledExperimental (true);  
 }
 
 const TodoItem = ({ item, trocaEstado, deleta}) => {
-    const [isExpanded, setIsExpanded] = useState (false)
+    const [isExpanded, setIsExpanded] = useState (false);
+    const animationValue = useRef(new Animated.Value(0)).current
     const expand = () => {
         LayoutAnimation.spring()
         setIsExpanded(!isExpanded)
     }
+    
+useEffect (() => {
+    Animated.timing(animationValue,{
+        toValue: item.completado ? 0.25 : 1,
+        duration: 1000,
+        useNativeDriver: true,
+    }).start();
+}, [item.completado])
 
     return (
        <View style={styles.container}> 

@@ -6,12 +6,9 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 const TelaAddTarefa = ({navigation, route}) => {
     const [tarefa, setTarefa] = useState ({nome: '', descricao: '', data : new Date(Date.now())})
     const [showDatePicker, setShowDatePicker] = useState(false)
-    //const [text, setText] = useState ('');
-
 
     const adicionaTarefa = () => {
         route.params.addTarefa(tarefa);
-        //setText('');
         setTarefa ({nome: '', descricao: '', data : new Date(Date.now())})
         navigation.goBack();
     };
