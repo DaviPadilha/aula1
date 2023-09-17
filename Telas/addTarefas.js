@@ -9,7 +9,7 @@ const TelaAddTarefa = ({navigation, route}) => {
 
     const adicionaTarefa = () => {
         route.params.addTarefa(tarefa);
-        setTarefa ({nome: '', descricao: '', data : new Date(Date.now())})
+        setTarefa ({nome: '', descricao: '', data : new Date(Date.now())});
         navigation.goBack();
     };
 

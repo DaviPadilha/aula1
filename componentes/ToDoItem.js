@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Switch, LayoutAnimation, UIManager, Platform } from 'react-native';
-import Animated from "react-native-reanimated";
+
 
 if(Platform.OS === 'android'){
   UIManager.setLayoutAnimationEnabledExperimental (true);  
